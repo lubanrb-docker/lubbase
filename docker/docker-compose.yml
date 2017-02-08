@@ -18,7 +18,7 @@ services:
       - $HOME/.docker:/home/luban/.docker
       - $HOME/.ssh:/home/luban/.ssh
       - $HOME/.lubanrc:/home/luban/.lubanrc
-      - $HOME/workspace/git_repos/lubanrb:/home/luban/lubanrb
+      - $HOME/.gitconfig:/home/luban/.gitconfig
     entrypoint: /bin/bash
     stdin_open: true
     tty: true
