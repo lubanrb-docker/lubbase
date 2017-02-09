@@ -3,7 +3,7 @@
 ## Prerequisites
 
 You need to install the following prerequisites before you can build and run the Lubbase image:
-  * [Docker Engine (1.13.0 or above)](https://docs.docker.com/engine/installation/)
+  * [Install Docker Engine (1.13.0 or above)](https://docs.docker.com/engine/installation/)
   * [Install Docker Compose (1.10.0 or above)](https://docs.docker.com/compose/install/)
 
 ## Build the Lubbase image
