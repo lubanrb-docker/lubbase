@@ -1,0 +1,31 @@
+# Environment: development.uber/lubbase
+# Revision: b6ebd36d6faae1bf0cc7c32238ff1144
+
+version: "3"
+
+services:
+  lubbase:
+    build:
+      context: ./context
+      args:
+        docker_engine_version: $DOCKER_ENGINE_VERSION
+        docker_compose_version: $DOCKER_COMPOSE_VERSION
+        luban_uid: $LUBAN_UID
+        luban_user: $LUBAN_USER
+        luban_root_path: $LUBAN_ROOT_PATH
+    image: uber-lubbase-development:1.0.2-9178b71f4117
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - luban_repo:$LUBAN_ROOT_PATH
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $HOME/.docker:/home/$LUBAN_USER/.docker
+      - $HOME/.ssh:/home/$LUBAN_USER/.ssh
+      - $HOME/.lubanrc:/home/$LUBAN_USER/.lubanrc
+      - $HOME/.gitconfig:/home/$LUBAN_USER/.gitconfig
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+
+volumes:
+  luban_repo:
