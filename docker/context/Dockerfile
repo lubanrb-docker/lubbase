@@ -1,8 +1,8 @@
 # Environment: development.uber/lubbase
-# Revision: 10da9ae0a14493b025e35bc469fd8af5
+# Revision: 46636c313e3cbdd8713bcd54a26cb2d6
 
 FROM centos:7
-MAINTAINER Chi Man Lei "chi.lei@laxino.com"
+MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
 
 ARG docker_engine_version
 ARG docker_compose_version
@@ -26,14 +26,11 @@ RUN yum -y install make gcc which rsync openssh-clients && \
     curl -L "https://github.com/docker/compose/releases/download/$docker_compose_version/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose
 
-# Add application archives
-ADD uber-lubbase-packages-2a4d23455e0d.tar.xz \
-    uber-lubbase-env.development-343a3587a9c7.tar.xz /
-
 # Create luban user with the given luban_uid
 # Adding luban user to the ftp group is to walk around an issue in mounting docker socket in OSX
 RUN adduser -ms /bin/bash -u $luban_uid -G docker,ftp $luban_user && \
     echo "source /opt/luban/env/development.uber/lubbase/.luban_profile" >> /home/$luban_user/.bashrc && \
+    mkdir -p $luban_root_path && \
     mkdir -p /opt/luban/projects && \
     mkdir -p /opt/luban/downloads && \
     mkdir -p /opt/luban/docker && \
@@ -42,6 +39,10 @@ RUN adduser -ms /bin/bash -u $luban_uid -G docker,ftp $luban_user && \
     mkdir -p /opt/luban/env && \
     mkdir -p /opt/luban/tmp && \
     chown -R $luban_user:$luban_user $luban_root_path
+
+# Add application archives
+ADD uber-lubbase-packages-2a4d23455e0d.tar.xz \
+    uber-lubbase-env.development-343a3587a9c7.tar.xz /
 
 # Populate image labels
 LABEL luban.project="uber" \
