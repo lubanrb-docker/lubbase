@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: b6ebd36d6faae1bf0cc7c32238ff1144
+# Revision: 0ec92d7c2c4fe6caf1819a1d35a4ce73
 
 version: "3"
 
@@ -21,7 +21,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - $HOME/.docker:/home/$LUBAN_USER/.docker
       - $HOME/.ssh:/home/$LUBAN_USER/.ssh
-      - $HOME/.lubanrc:/home/$LUBAN_USER/.lubanrc
       - $HOME/.gitconfig:/home/$LUBAN_USER/.gitconfig
     entrypoint: /bin/bash
     stdin_open: true
