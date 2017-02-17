@@ -68,7 +68,6 @@ docker-compose run --rm -u root lubbase
 
 # Inside the container, run the following command to update the user permission
 # Replace with your settings if the luban user name and the luban root path are different
-```
 chown -R luban:luban /opt/luban
 ```
 
