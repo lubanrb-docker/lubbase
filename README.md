@@ -60,8 +60,26 @@ You can use the same way to override other build settings temporarily.
 
 ## Run the Lubbase image
 
+When you start a container from the image for the very first time, you need to update the user permission first as root. 
+
+```
+cd lubbase-development-1.0.2/docker
+docker-compose run --rm -u root lubbase
+
+# Inside the container, run the following command to update the user permission
+```
+
+Then, you can start the container with regular user:
+
 ```
 cd lubbase-development-1.0.2/docker
 docker-compose run --rm lubbase
 ```
+
+The user permission update is to walk around two issues in current docker version:
+
+  * Dockerfile ADD/COPY does NOT honor USER and thus, files always are owned by root #6119
+  * Inefficient layer sizes when changing permissions or adding directories to existing directories #5505
+
+This might not be necessary in the future docker releases. 
 
