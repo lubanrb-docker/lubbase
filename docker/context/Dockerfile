@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: 46636c313e3cbdd8713bcd54a26cb2d6
+# Revision: 1f93c3342dae741e0899faa04c74f8c5
 
 FROM centos:7
 MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
@@ -11,15 +11,21 @@ ARG luban_user
 ARG luban_root_path
 
 # Install required tools and libraries
-RUN yum -y install make gcc which rsync openssh-clients && \
-    yum -y install zlib-devel perl-devel && \
+RUN yum -y install \
+        make \
+        gcc \
+        which \
+        rsync \
+        openssh-clients \
+        zlib-devel \
+        perl-devel && \
+    yum clean all && \
     \
     # Install docker engine
     yum -y install yum-utils && \ 
     yum-config-manager --add-repo \
     https://docs.docker.com/engine/installation/linux/repo_files/centos/docker.repo && \
     yum makecache fast && yum -y install docker-engine-$docker_engine_version && \
-    \
     yum clean all && \
     \
     # Install docker compose
@@ -43,6 +49,8 @@ RUN adduser -ms /bin/bash -u $luban_uid -G docker,ftp $luban_user && \
 # Add application archives
 ADD uber-lubbase-packages-2a4d23455e0d.tar.xz \
     uber-lubbase-env.development-343a3587a9c7.tar.xz /
+
+# RUN chown -R $luban_user:$luban_user $luban_root_path
 
 # Populate image labels
 LABEL luban.project="uber" \
