@@ -1,6 +1,52 @@
-# Uber Lubbase docker image repository
+# Uber Lubbase docker image development-1.0.5
 
-Uber Lubbase docker image is used to manage the deployment cycle of Luban deployment projects for either regular (host-based or VM-based) or docker-based deployments thru Luban.
+## Prerequisites
 
-This is the master repository for scripts or appropriate documentation. Images are branched per major version.
+You need to install the following prerequisites before you can build and run the Lubbase image:
+  * [Install Docker Engine (1.13.0 or above)](https://docs.docker.com/engine/installation/)
+  * [Install Docker Compose (1.10.0 or above)](https://docs.docker.com/compose/install/)
+
+## Build the Lubbase image
+
+Download the build scripts from the repository:
+
+```
+cd your_work_directory
+curl -sSL -o lubbase-development-1.0.5.tar.gz  https://github.com/lubanrb-docker/lubbase/archive/development-1.0.5.tar.gz
+```
+
+Uncompress the tar ball:
+
+```
+tar -xzf lubbase-development-1.0.5.tar.gz
+```
+
+Build the image with the default user and uid:
+
+```
+cd lubbase-development-1.0.5/docker
+docker-compose build
+```
+
+Build the image with current uid:
+
+```
+cd lubbase-development-1.0.5/docker
+LUBAN_UID=$(id -u $(whoami)) docker-compose build
+```
+
+or, you can change the default user and uid (LUBAN_USER and LUBAN_UID in .env file) to your preferred settings:
+
+```
+cd lubbase-development-1.0.5/docker
+vi .env  # update LUBAN_USER and LUBAN_UID
+docker-compose build
+```
+
+## Run the Lubbase image
+
+```
+cd lubbase-development-1.0.5/docker
+docker-compose run --rm lubbase
+```
 
