@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: 47ea166db9022c446e1e78507bb9ee0d
+# Revision: 434766a7cfb81977f6d738ffbe2b5f9c
 
 FROM centos:7
 MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
@@ -67,7 +67,7 @@ LABEL luban.project="uber" \
       luban.stage="development" \
       luban.packages.source_tag="77cc3d71ce09" \
       luban.env.development.source_tag="343a3587a9c7" \
-      luban.build_tag="1.0.6" \
+      luban.build_tag="1.0.5" \
       luban.bulid_rev="852a1821c5f3" \
       luban.packages.curl.versions="7.53.1" \
       luban.packages.curl.current_version="7.53.1" \

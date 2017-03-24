@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: 7d99c0c382d3d39258eaa31cbca2eb01
+# Revision: 8c879f5897020cd7683ac2e2be16ec5a
 
 version: "3"
 
@@ -15,7 +15,7 @@ services:
         luban_uid: $LUBAN_UID
         luban_user: $LUBAN_USER
         luban_root_path: $LUBAN_ROOT_PATH
-    image: uber-lubbase-development:1.0.6-852a1821c5f3
+    image: uber-lubbase-development:1.0.5-852a1821c5f3
     environment:
       TZ: Asia/Shanghai
     volumes:
