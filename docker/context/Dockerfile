@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: 434766a7cfb81977f6d738ffbe2b5f9c
+# Revision: 0e44babb71437997a9a253b2636b96d1
 
 FROM centos:7
 MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
@@ -11,9 +11,6 @@ ARG docker_group
 ARG luban_uid
 ARG luban_user
 ARG luban_root_path
-
-# Create docker group with the given docker gid
-RUN groupadd -g $docker_gid $docker_group
 
 # Install required tools and libraries
 RUN yum -y install \
@@ -29,6 +26,9 @@ RUN yum -y install \
         sqlite-devel \
         mysql-devel && \
     yum clean all && \
+    \
+    # Create docker group with the given docker gid
+    groupadd -g $docker_gid $docker_group && \
     \
     # Install docker engine
     yum -y install yum-utils && \ 
