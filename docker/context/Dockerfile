@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: 0e44babb71437997a9a253b2636b96d1
+# Revision: c80bd100f67a231f383ceb1f9734c57b
 
 FROM centos:7
 MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
@@ -13,15 +13,16 @@ ARG luban_user
 ARG luban_root_path
 
 # Install required tools and libraries
-RUN yum -y install \
+RUN yum -y install epel-release && \
+    yum -y install \
         make \
         gcc \
+        gcc-c++ \
         which \
         rsync \
         openssh-clients \
         zlib-devel \
         perl-devel \
-        epel-release \
         nodejs \
         sqlite-devel \
         mysql-devel && \
