@@ -1,5 +1,5 @@
 # Environment: development.uber/lubbase
-# Revision: c80bd100f67a231f383ceb1f9734c57b
+# Revision: cd494acbbb463bb34a8721bbd4c55c5b
 
 FROM centos:7
 MAINTAINER Rubyist Chi "rubyist.chi@gmail.com"
@@ -57,7 +57,7 @@ RUN adduser -ms /bin/bash -u $luban_uid -G docker,ftp $luban_user && \
     chown -R $luban_user:$luban_user $luban_root_path
 
 # Add application archives
-ADD uber-lubbase-packages-77cc3d71ce09.tar.xz \
+ADD uber-lubbase-packages-a081e6c895f0.tar.xz \
     uber-lubbase-env.development-343a3587a9c7.tar.xz /
 
 # RUN chown -R $luban_user:$luban_user $luban_root_path
@@ -66,10 +66,10 @@ ADD uber-lubbase-packages-77cc3d71ce09.tar.xz \
 LABEL luban.project="uber" \
       luban.application="uber" \
       luban.stage="development" \
-      luban.packages.source_tag="77cc3d71ce09" \
+      luban.packages.source_tag="a081e6c895f0" \
       luban.env.development.source_tag="343a3587a9c7" \
       luban.build_tag="1.0.5" \
-      luban.bulid_rev="852a1821c5f3" \
+      luban.bulid_rev="f764c3e48d60" \
       luban.packages.curl.versions="7.53.1" \
       luban.packages.curl.current_version="7.53.1" \
       luban.packages.curl.before_install.openssl="1.1.0e" \
@@ -77,8 +77,8 @@ LABEL luban.project="uber" \
       luban.packages.git.current_version="2.12.0" \
       luban.packages.git.before_install.openssl="1.0.2k" \
       luban.packages.git.before_install.curl="7.53.1" \
-      luban.packages.ruby.versions="2.4.0" \
-      luban.packages.ruby.current_version="2.4.0" \
+      luban.packages.ruby.versions="2.4.1" \
+      luban.packages.ruby.current_version="2.4.1" \
       luban.packages.ruby.before_install.openssl="1.1.0e" \
       luban.packages.ruby.after_install.rubygems="2.6.10" \
       luban.packages.ruby.after_install.bundler="1.14.4" \
